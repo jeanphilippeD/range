@@ -1,0 +1,32 @@
+[/
+    Copyright 2017 Jean-Philippe Dufraigne
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
+/]
+[section:joined joined]
+
+[table
+    [[Syntax] [Code]]
+    [[Pipe] [`rng | boost::adaptors::joined`]]
+    [[Function] [`boost::adaptors::join(rng)`]]
+]
+
+* [*Precondition:] The `value_type` of the range is a range.
+* [*Postcondition:] For all elements `x` in the returned range, `x` is the result of `fun(y)` where `y` is the corresponding element in the original range.
+* [*Throws:] Whatever the copy-constructor of `fun` might throw.
+* [*Range Category:] Both `rng` and the `value_type` of `rng` must be a model of __single_pass_range__ or better.
+* [*Range Return Type:] `boost::joined_range<decltype(rng)>`
+* [*Returned Range Category:] The minimum of the range category of `rng`, the `value_type` of `rng` and __forward_range__.
+
+[section:transformed_example transformed example]
+[import ../../../test/adaptor_test/transformed_example.cpp]
+[transformed_example]
+[endsect]
+
+This would produce the output:
+``
+2,4,6,8,10,12,14,16,18,20,
+``
+[endsect]
+
+
